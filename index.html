@@ -15,12 +15,13 @@
   {
     var minutoaponer = (minutoexacto + 11);
   }
-  start.setHours(23, minutoaponer , 52);
+  start.setHours(horaactual, minutoaponer , 52);
   function pad(num) {
     return ("0" + parseInt(num)).substr(-2);
   }
 
   function tick() {etDate(start.getDate() + 1);
+    var now = new Date();
     var remain = ((start - now) / 1000);
     var hh = pad((remain / 60 / 60) % 60);
     var mm = pad((remain / 60) % 60);
