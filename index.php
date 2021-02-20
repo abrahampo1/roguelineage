@@ -1,50 +1,39 @@
-<?php
-session_start();
-include("./conectar.php");
-$sql = "SELECT * FROM servers";
-if($videos = mysqli_query($link, $sql))
-{
-} 
-else{
-  //hacer cosas de error
-  
-}
-?>
+<!-- Display the countdown timer in an element -->
+<p id="time"></p>
 
+<script>
+(function() {
+  var start = new Date;
+  var minuto = new Date();
+  var minutoexacto_core = ((minuto.getMinutes()/10).toFixed(1));
+  var minutoexacto = parseInt(minutoexacto_core)*10;
+  var horaactual = minuto.getHours();
+  if(minutoexacto + 11 >= 60)
+  {
+    minutoaponer = minutoexacto + 1;
+  }else
+  {
+    minutoaponer = minutoexacto + 11;
+  }
+  start.setHours(23, minutoaponer , 52); // 11pm
+  function pad(num) {
+    return ("0" + parseInt(num)).substr(-2);
+  }
 
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<title>CPReplay</title>
-<link href="css/index.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div class="container"> 
-  <header class="header">
-    <img src="https://i.imgur.com/t2iQvlc.png" width="210" height="90">
-	
-  </header>
-  <div class="" style="background-color: #282828; height: 55px; display:flex">
-	
-	</div>
-  <div class="gallery">
-    <?php
-    
-    while($video = mysqli_fetch_assoc($videos))
-    {
-      echo'<div class="thumbnail"></a>
-      <h4>'.$video["server"].'</h4>
-      <p class="tag">'.$video["date"].'</p>
-    </div>';
+  function tick() {
+    var now = new Date;
+    if (now > start) { // too late, go to tomorrow
+      start.setDate(start.getDate() + 1);
     }
-    
-    ?>
-  </div>
+    var remain = ((start - now) / 1000);
+    var hh = pad((remain / 60 / 60) % 60);
+    var mm = pad((remain / 60) % 60);
+    var ss = pad(remain % 60);
+    document.getElementById('time').innerHTML =
+      hh + ":" + mm + ":" + ss;
+    setTimeout(tick, 1000);
+  }
 
-</div>
-</body>
-</html>
+  document.addEventListener('DOMContentLoaded', tick);
+})();
+</script>
