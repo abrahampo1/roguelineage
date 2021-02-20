@@ -22,9 +22,9 @@
 
   function tick() {etDate(start.getDate() + 1);
     var now = new Date;
-    if (now > start) { // too late, go to tomorrow
+    if (now > start) {
       start.setDate(start.getDate() + 1);
-    }
+    }}
     var remain = ((start - now) / 1000);
     var hh = pad((remain / 60 / 60) % 60);
     var mm = pad((remain / 60) % 60);
