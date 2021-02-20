@@ -10,10 +10,10 @@
   var horaactual = minuto.getHours();
   if(minutoexacto + 11 >= 60)
   {
-    minutoaponer = minutoexacto + 1;
+    var minutoaponer = minutoexacto + 1;
   }else
   {
-    minutoaponer = minutoexacto + 11;
+    var minutoaponer = minutoexacto + 11;
   }
   start.setHours(23, minutoaponer , 52); // 11pm
   function pad(num) {
