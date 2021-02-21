@@ -10,7 +10,7 @@
 <h1 style="text-align: center">Siguiente spawn de ores en:</h1>
 <div class="center">
   <h2 style="text-align: center" id="time"></h2>
-  <button  id="sync" onclick="sinc()">Sincronizar!</button>
+  <button id="sync" onclick="sinc()">Sincronizar!</button>
 </div>
 <br /><br />
 <p style="text-align: center">
@@ -51,14 +51,10 @@
         minutoaponer = minutoexacto % 10;
         minutoaponer = pad(minutoaponer);
         horaactual++;
-      } else if(minutoexacto < 10){
-        minutoaponer = minutoexacto + 1;
-      }else
-      {
+      } else {
         minutoaponer = minutoexacto + 1;
       }
-      if(segundos < 10)
-      {
+      if (segundos < 10) {
         segundos = pad(segundos);
       }
       document.getElementById("minuto").innerHTML =
@@ -72,9 +68,6 @@
       function pad(num) {
         return ("0" + parseInt(num)).substr(-2);
       }
-      function pad(num) {
-        return ("0" + parseInt(num)).substr(-2);
-      }
       function tick() {
         var now = new Date();
         var remain = (start - now) / 1000;
@@ -82,8 +75,8 @@
         var mm = pad((remain / 60) % 60);
         var ss = pad(remain % 60);
         document.getElementById("time").innerHTML = mm + ":" + ss;
-        
-        if (hh == '00' && mm == '00' && ss == '00') {
+
+        if (hh == "00" && mm == "00" && ss == "00") {
           function PlaySound(soundObj) {
             var sound = document.getElementById(soundObj);
             sound.Play();
@@ -93,6 +86,7 @@
       }
 
       document.addEventListener("DOMContentLoaded", tick);
+      tick();
     })();
   }
 </script>
