@@ -83,7 +83,7 @@
         var ss = pad(remain % 60);
         document.getElementById("time").innerHTML = mm + ":" + ss;
         
-        if (hh == 00 && mm == 00 && ss == 00) {
+        if (hh == '00' && mm == '00' && ss == '00') {
           function PlaySound(soundObj) {
             var sound = document.getElementById(soundObj);
             sound.Play();
