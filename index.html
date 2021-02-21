@@ -7,6 +7,7 @@
     height: 200px;
   }
 </style>
+<meta charset="UTF-8">
 <h1 style="text-align: center">Siguiente spawn de ores en:</h1>
 <div class="center">
   <h2 style="text-align: center" id="time"></h2>
@@ -17,10 +18,9 @@
   Esta mierda ha sido programada por Abraham (abrahampo1) de la house Frozono
 </p>
 <br />
-<h2>Debug</h2>
+<h2>Tutorial</h2>
 <hr />
-<p id="minuto"></p>
-<p>Servidor: EU</p>
+<p>Haz click en "Sincronizar!" cuando veas aparecer los minerales, a partir de ese momento la página estará sincronizada con tu servidor y podras saber la hora exacta de spawn de los ores en todo el servidor. Para reiniciar el temporizador, reinicia la página.</p>
 <hr />
 <h2>Aviso</h2>
 <p>
@@ -37,6 +37,7 @@
   <option value="avisos/avisomujer.mp3">TTS Mujer</option>
 </select>
 <button onclick="testsound()">Probar Sonido</button>
+<p id="minuto"></p>
 <script>
   function testsound() {
     var sonidos = document.getElementById("sonido");
