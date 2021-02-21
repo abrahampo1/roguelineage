@@ -28,62 +28,80 @@
   <title>Roguelineage - Abrahampo1</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-
+<link rel="apple-touch-icon" sizes="57x57" href="icon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="icon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="icon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="icon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="icon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="icon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="icon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="icon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="icon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="icon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="icon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
 </head>
-<a href="https://discord.gg/eUsMqTrbfb"><img src="anuncios/anunciogrips.png" alt="" style="
+<a href="https://discord.gg/eUsMqTrbfb"><img src="anuncios/anunciogrips.png" alt="Abrahampo1" class="borde" style="
 position: absolute;
 top: 50px;
 left: 50px;
 width: 15%;"></a>
-<h1 style="text-align: center" style="font-family: 'EB Garamond', serif;">Siguiente spawn de ores en:</h1>
-<div class="center">
-  <div class="borde center" style="width: 20%;">
-    <h2 style="text-align: center" id="time"></h2>
-    <button id="sync" class="borde" style="font-family: 'EB Garamond', serif; font-size: 18px; background-color: #fad6ad; border-radius: 5px; height: 50px; width: 100px;" onclick="sinc()">Sincronizar!</button>
+<div style="width: 99%; height: 99%;">
+  <h1 style="text-align: center; margin-top: 10px;" style="font-family: 'EB Garamond', serif; ">Siguiente spawn de ores en:</h1>
+  <div class="center">
+    <div class="borde center" style="width: 20%;">
+      <h2 style="text-align: center" id="time"></h2>
+      <button id="sync" class="borde" style="font-family: 'EB Garamond', serif; font-size: 18px; background-color: #fad6ad; border-radius: 5px; height: 50px; width: 100px;" onclick="sinc()">Sincronizar!</button>
+    </div>
+    
+  </div>
+  <br /><br />
+  <p style="text-align: center">
+    Esta mierda ha sido programada por Abraham (abrahampo1) de la house Frozono
+  </p>
+  <br />
+  <h2 style="font-family: 'EB Garamond', serif; text-align:center">Tutorial</h2>
+  <div class="center">
+    <div class="borde" style=" width: 50%; padding: 10px;">
+      <p style="" class="">
+        Haz click en "Sincronizar!" cuando veas aparecer los minerales, a partir de
+        ese momento la página estará sincronizada con tu servidor y podras saber la
+        hora exacta de spawn de los ores en todo el servidor. Para reiniciar el
+        temporizador, reinicia la página.
+      </p>
+    </div>
   </div>
   
-</div>
-<br /><br />
-<p style="text-align: center">
-  Esta mierda ha sido programada por Abraham (abrahampo1) de la house Frozono
-</p>
-<br />
-<h2 style="font-family: 'EB Garamond', serif; text-align:center">Tutorial</h2>
-<div class="center">
-  <div class="borde" style=" width: 50%; padding: 10px;">
-    <p style="" class="">
-      Haz click en "Sincronizar!" cuando veas aparecer los minerales, a partir de
-      ese momento la página estará sincronizada con tu servidor y podras saber la
-      hora exacta de spawn de los ores en todo el servidor. Para reiniciar el
-      temporizador, reinicia la página.
-    </p>
+  
+  <h2 style="font-family: 'EB Garamond', serif; text-align:center">Ajustes</h2>
+  <div class="center wrapper">
+    <div class="borde" style=" width: 50%; padding: 10px; padding-bottom: 30px;">
+      <label for="sonido" style="font-family: 'EB Garamond', serif; font-size: 18px;">Aviso Sonoro</label><br />
+      <select name="sonido" style="background-color: #fad6ad;text-align: center;font-size: 18px; width: 80%; font-family: 'EB Garamond', serif; text-align:center" id="sonido">
+        <option value="" selected>Ninguno</option>
+        <option value="https://www.myinstants.com/media/sounds/zeldaitem.swf.mp3">
+          Sonido Zelda
+        </option>
+        <option value="avisos/avisomujer.mp3">TTS Mujer</option>
+      </select>
+      <button onclick="testsound()" style="width: 19%; font-family: 'EB Garamond', serif; font-size: 18px; background-color: #fad6ad; border-radius: 5px;">Probar Sonido</button>
+      <br /><br />
+      <label for="audio_src" style="font-family: 'EB Garamond', serif; font-size: 18px;">URL sonido personalizado</label>
+      <br />
+      <input type="text" name="audio_src" style="background-color: #fad6ad;font-size: 18px;text-align: center; width: 80%; font-family: 'EB Garamond', serif; text-align:center" id="audio_src" />
+      <button onclick="testsoundcustom()" style="width: 19%; font-family: 'EB Garamond', serif; font-size: 18px; background-color: #fad6ad; border-radius: 5px;">Probar Sonido</button>
+      <br />
+      <p id="infosound"></p>
+      <br />
+      <p id="minuto"></p>
+      </div>
   </div>
 </div>
 
-
-<h2 style="font-family: 'EB Garamond', serif; text-align:center">Ajustes</h2>
-<div class="center wrapper">
-  <div class="borde" style=" width: 50%; padding: 10px; padding-bottom: 30px;">
-    <label for="sonido" style="font-family: 'EB Garamond', serif; font-size: 18px;">Aviso Sonoro</label><br />
-    <select name="sonido" style="background-color: #fad6ad;text-align: center;font-size: 18px; width: 80%; font-family: 'EB Garamond', serif; text-align:center" id="sonido">
-      <option value="" selected>Ninguno</option>
-      <option value="https://www.myinstants.com/media/sounds/zeldaitem.swf.mp3">
-        Sonido Zelda
-      </option>
-      <option value="avisos/avisomujer.mp3">TTS Mujer</option>
-    </select>
-    <button onclick="testsound()" style="width: 19%; font-family: 'EB Garamond', serif; font-size: 18px; background-color: #fad6ad; border-radius: 5px;">Probar Sonido</button>
-    <br /><br />
-    <label for="audio_src" style="font-family: 'EB Garamond', serif; font-size: 18px;">URL sonido personalizado</label>
-    <br />
-    <input type="text" name="audio_src" style="background-color: #fad6ad;font-size: 18px;text-align: center; width: 80%; font-family: 'EB Garamond', serif; text-align:center" id="audio_src" />
-    <button onclick="testsoundcustom()" style="width: 19%; font-family: 'EB Garamond', serif; font-size: 18px; background-color: #fad6ad; border-radius: 5px;">Probar Sonido</button>
-    <br />
-    <p id="infosound"></p>
-    <br />
-    <p id="minuto"></p>
-    </div>
-</div>
 
 <script>
   var sonidos = document.getElementById("sonido");
