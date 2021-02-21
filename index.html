@@ -7,7 +7,7 @@
     height: 200px;
   }
 </style>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <head>
   <title>Roguelineage - Abrahampo1</title>
 </head>
@@ -23,7 +23,12 @@
 <br />
 <h2>Tutorial</h2>
 <hr />
-<p>Haz click en "Sincronizar!" cuando veas aparecer los minerales, a partir de ese momento la página estará sincronizada con tu servidor y podras saber la hora exacta de spawn de los ores en todo el servidor. Para reiniciar el temporizador, reinicia la página.</p>
+<p>
+  Haz click en "Sincronizar!" cuando veas aparecer los minerales, a partir de
+  ese momento la página estará sincronizada con tu servidor y podras saber la
+  hora exacta de spawn de los ores en todo el servidor. Para reiniciar el
+  temporizador, reinicia la página.
+</p>
 
 <hr />
 <h2>Ajustes</h2>
@@ -35,11 +40,26 @@
   <option value="avisos/avisomujer.mp3">TTS Mujer</option>
 </select>
 <button onclick="testsound()">Probar Sonido</button>
+<br /><br />
+<label for="audio_src">URL sonido personalizado</label>
+<br />
+<input type="text" name="audio_src" id="audio_src" />
+<button onclick="testsoundcustom()">Probar Sonido</button>
+<br />
+<p id="infosound"></p>
+<br />
 <p id="minuto"></p>
 <script>
+  var sonidos = document.getElementById("sonido");
+  var aviso = sonidos.options[sonidos.selectedIndex].value;
   function testsound() {
     var sonidos = document.getElementById("sonido");
-    var aviso = sonidos.options[sonidos.selectedIndex].value;
+    aviso = sonidos.options[sonidos.selectedIndex].value;
+    var sound = new Audio(aviso);
+    sound.play();
+  };
+  function testsoundcustom() {
+    aviso = document.getElementById("audio_src").value;
     var sound = new Audio(aviso);
     sound.play();
   }
@@ -71,7 +91,7 @@
         minutoaponer +
         ":" +
         segundos;
-      start.setHours(horaactual, minutoaponer, segundos);
+      start.setHours(horaactual, minutoaponer-10, segundos +5);
       function pad(num) {
         return ("0" + parseInt(num)).substr(-2);
       }
@@ -84,8 +104,6 @@
         document.getElementById("time").innerHTML = mm + ":" + ss;
 
         if (mm == "00" && ss == "00") {
-          var sonidos = document.getElementById("sonido");
-          var aviso = sonidos.options[sonidos.selectedIndex].value;
           var sound = new Audio(aviso);
           sound.play();
           var minuto = new Date();
@@ -104,12 +122,12 @@
           }
           start.setHours(horaactual, minutoaponer, segundos);
           document.getElementById("minuto").innerHTML =
-        "Hora exacta de spawn: " +
-        horaactual +
-        ":" +
-        minutoaponer +
-        ":" +
-        segundos;
+            "Hora exacta de spawn: " +
+            horaactual +
+            ":" +
+            minutoaponer +
+            ":" +
+            segundos;
         }
         setTimeout(tick, 1000);
       }
