@@ -1,61 +1,98 @@
 <!-- uwu -->
-<h1 style="text-align: center;">Siguiente spawn de ores en:</h1>
-<h2 style="text-align: center;" id="time"></h2>
-<br><br>
-<p style="text-align: center;">Esta mierda ha sido programada por Abraham (abrahampo1) de la house Frozono</p>
-<br>
+<style>
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+  }
+</style>
+<h1 style="text-align: center">Siguiente spawn de ores en:</h1>
+<div class="center">
+  <h2 style="text-align: center" id="time"></h2>
+  <button  id="sync" onclick="sinc()">Sincronizar!</button>
+</div>
+<br /><br />
+<p style="text-align: center">
+  Esta mierda ha sido programada por Abraham (abrahampo1) de la house Frozono
+</p>
+<br />
 <h2>Debug</h2>
-<hr>
+<hr />
 <p id="minuto"></p>
 <p>Servidor: EU</p>
-<hr>
+<hr />
 <h2>Aviso</h2>
-<p>La hora esta sincronizada con los servers de Roblox EU, por lo que si te conectas a servers distintos, esta timer te sera completamente inutil.</p>
-  
-  <embed src="success.wav" autostart="false" width="0" height="0" id="sound1"
-  enablejavascript="true">
+<p>
+  La hora esta sincronizada con los servers de Roblox EU, por lo que si te
+  conectas a servers distintos, esta timer te sera completamente inutil.
+</p>
+
+<embed
+  src="https://www.myinstants.com/media/sounds/tindeck_1.mp3"
+  autostart="false"
+  width="0"
+  height="0"
+  id="sound1"
+  enablejavascript="true"
+/>
 <script>
-(function() {
-  var start = new Date();
-  var minuto = new Date();
-  var minutoexacto_core = ((minuto.getMinutes()/10).toFixed(1));
-  var minutoexacto = parseInt(minutoexacto_core)*10;
-  var horaactual = minuto.getHours();
-  if(minutoexacto == 50)
-  {
-   minutoaponer = minutoexacto + 1;
-  }else
-  {
-   minutoaponer = (minutoexacto + 11);
-  }
-  document.getElementById('minuto').innerHTML ="Hora exacta de spawn: " + horaactual + ":" + minutoaponer + ":52";
-  start.setHours(horaactual, minutoaponer , 52);
-  function pad(num) {
-    return ("0" + parseInt(num)).substr(-2);
-  }
+  var empezar = false;
+  function sinc() {
+    var myobj = document.getElementById("sync");
+    myobj.remove();
+    (function () {
+      var start = new Date();
+      var minuto = new Date();
+      var minutoexacto = minuto.getMinutes();
+      var horaactual = minuto.getHours();
+      var segundos = minuto.getSeconds();
+      if (minutoexacto >= 50) {
+        minutoaponer = minutoexacto % 10;
+        minutoaponer = pad(minutoaponer);
+        horaactual++;
+      } else if(minutoexacto < 10){
+        minutoaponer = minutoexacto + 1;
+      }else
+      {
+        minutoaponer = minutoexacto + 1;
+      }
+      if(segundos < 10)
+      {
+        segundos = pad(segundos);
+      }
+      document.getElementById("minuto").innerHTML =
+        "Hora exacta de spawn: " +
+        horaactual +
+        ":" +
+        minutoaponer +
+        ":" +
+        segundos;
+      start.setHours(horaactual, minutoaponer, segundos);
+      function pad(num) {
+        return ("0" + parseInt(num)).substr(-2);
+      }
+      function pad(num) {
+        return ("0" + parseInt(num)).substr(-2);
+      }
+      function tick() {
+        var now = new Date();
+        var remain = (start - now) / 1000;
+        var hh = pad((remain / 60 / 60) % 60);
+        var mm = pad((remain / 60) % 60);
+        var ss = pad(remain % 60);
+        document.getElementById("time").innerHTML = mm + ":" + ss;
+        
+        if (hh == 00 && mm == 00 && ss == 00) {
+          function PlaySound(soundObj) {
+            var sound = document.getElementById(soundObj);
+            sound.Play();
+          }
+        }
+        setTimeout(tick, 1000);
+      }
 
-  function pad(num) {
-    return ("0" + parseInt(num)).substr(-2);
+      document.addEventListener("DOMContentLoaded", tick);
+    })();
   }
-
-  function tick() {
-    var now = new Date;
-    if (now == start) { // too late, go to tomorrow
-      location.reload();
-      function PlaySound(soundObj) {
-    var sound = document.getElementById(soundObj);
-    sound.Play();
-  }
-    }
-    var remain = ((start - now) / 1000);
-    var hh = pad((remain / 60 / 60) % 60);
-    var mm = pad((remain / 60) % 60);
-    var ss = pad(remain % 60);
-    document.getElementById('time').innerHTML =
-      mm + ":" + ss;
-    setTimeout(tick, 1000);
-  }
-
-  document.addEventListener('DOMContentLoaded', tick);
-})();
 </script>
