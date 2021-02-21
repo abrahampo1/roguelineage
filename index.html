@@ -41,6 +41,7 @@
   function tick() {
     var now = new Date;
     if (now == start) { // too late, go to tomorrow
+      location.reload();
       function PlaySound(soundObj) {
     var sound = document.getElementById(soundObj);
     sound.Play();
