@@ -3,7 +3,17 @@
 <h2 style="text-align: center;" id="time"></h2>
 <br><br>
 <p style="text-align: center;">Esta mierda ha sido programada por Abraham (abrahampo1) de la house Frozono</p>
-
+<br>
+<h2>Debug</h2>
+<hr>
+<p id="minuto"></p>
+<p>Servidor: EU</p>
+<hr>
+<h2>Aviso</h2>
+<p>La hora esta sincronizada con los servers de Roblox EU, por lo que si te conectas a servers distintos, esta timer te sera completamente inutil.</p>
+  
+  <embed src="success.wav" autostart="false" width="0" height="0" id="sound1"
+  enablejavascript="true">
 <script>
 (function() {
   var start = new Date();
@@ -11,13 +21,14 @@
   var minutoexacto_core = ((minuto.getMinutes()/10).toFixed(1));
   var minutoexacto = parseInt(minutoexacto_core)*10;
   var horaactual = minuto.getHours();
-  if((minutoexacto + 11) >= 60)
+  if(minutoexacto == 50)
   {
-    var minutoaponer = (minutoexacto + 1);
+   minutoaponer = minutoexacto + 1;
   }else
   {
-    var minutoaponer = (minutoexacto + 11);
+   minutoaponer = (minutoexacto + 11);
   }
+  document.getElementById('minuto').innerHTML ="Hora exacta de spawn: " + horaactual + ":" + minutoaponer + ":52";
   start.setHours(horaactual, minutoaponer , 52);
   function pad(num) {
     return ("0" + parseInt(num)).substr(-2);
@@ -29,8 +40,11 @@
 
   function tick() {
     var now = new Date;
-    if (now > start) { // too late, go to tomorrow
-      start.setDate(start.getDate() + 1);
+    if (now == start) { // too late, go to tomorrow
+      function PlaySound(soundObj) {
+    var sound = document.getElementById(soundObj);
+    sound.Play();
+  }
     }
     var remain = ((start - now) / 1000);
     var hh = pad((remain / 60 / 60) % 60);
