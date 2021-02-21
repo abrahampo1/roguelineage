@@ -1,36 +1,53 @@
 <!-- uwu -->
 <style>
+  html {
+    background-color: #a1978e;
+  }
   .center {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 200px;
   }
+  .borde
+  {
+    border-color: #503e28;
+    border-style:double;
+  }
 </style>
+<html>
 <meta charset="UTF-8" />
 <head>
   <title>Roguelineage - Abrahampo1</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
 </head>
-<h1 style="text-align: center">Siguiente spawn de ores en:</h1>
+<h1 style="text-align: center" style="font-family: 'EB Garamond', serif;">Siguiente spawn de ores en:</h1>
 <div class="center">
-  <h2 style="text-align: center" id="time"></h2>
-  <button id="sync" onclick="sinc()">Sincronizar!</button>
+  <div class="borde center" style="width: 20%;">
+    <h2 style="text-align: center" id="time"></h2>
+    <button id="sync" class="borde" style="font-family: 'EB Garamond', serif; font-size: 18px; background-color: #fad6ad; border-radius: 5px; height: 50px; width: 100px;" onclick="sinc()">Sincronizar!</button>
+  </div>
+  
 </div>
 <br /><br />
 <p style="text-align: center">
   Esta mierda ha sido programada por Abraham (abrahampo1) de la house Frozono
 </p>
 <br />
-<h2>Tutorial</h2>
-<hr />
-<p>
-  Haz click en "Sincronizar!" cuando veas aparecer los minerales, a partir de
-  ese momento la página estará sincronizada con tu servidor y podras saber la
-  hora exacta de spawn de los ores en todo el servidor. Para reiniciar el
-  temporizador, reinicia la página.
-</p>
+<h2 style="font-family: 'EB Garamond', serif; text-align:center">Tutorial</h2>
+<div class="center">
+  <div class="borde" style="height: 100px; width: 50%; padding: 10px;">
+    <p>
+      Haz click en "Sincronizar!" cuando veas aparecer los minerales, a partir de
+      ese momento la página estará sincronizada con tu servidor y podras saber la
+      hora exacta de spawn de los ores en todo el servidor. Para reiniciar el
+      temporizador, reinicia la página.
+    </p>
+  </div>
+</div>
 
-<hr />
+
 <h2>Ajustes</h2>
 <label for="sonido">Aviso Sonoro</label><br />
 <select name="sonido" id="sonido">
@@ -137,3 +154,4 @@
     })();
   }
 </script>
+</html>
