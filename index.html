@@ -3,6 +3,12 @@
   html {
     background-color: #a1978e;
   }
+  .wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
   .center {
     display: flex;
     justify-content: center;
@@ -14,6 +20,7 @@
     border-color: #503e28;
     border-style:double;
   }
+
 </style>
 <html>
 <meta charset="UTF-8" />
@@ -21,7 +28,12 @@
   <title>Roguelineage - Abrahampo1</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+
 </head>
+<a href="https://discord.gg/eUsMqTrbfb"><img src="anuncios/anunciogrips.png" alt="" style="
+position: absolute;
+top: 50px;
+left: 50px;"></a>
 <h1 style="text-align: center" style="font-family: 'EB Garamond', serif;">Siguiente spawn de ores en:</h1>
 <div class="center">
   <div class="borde center" style="width: 20%;">
@@ -48,24 +60,30 @@
 </div>
 
 
-<h2>Ajustes</h2>
-<label for="sonido">Aviso Sonoro</label><br />
-<select name="sonido" id="sonido">
-  <option value="https://www.myinstants.com/media/sounds/zeldaitem.swf.mp3">
-    Sonido Zelda
-  </option>
-  <option value="avisos/avisomujer.mp3">TTS Mujer</option>
-</select>
-<button onclick="testsound()">Probar Sonido</button>
-<br /><br />
-<label for="audio_src">URL sonido personalizado</label>
-<br />
-<input type="text" name="audio_src" id="audio_src" />
-<button onclick="testsoundcustom()">Probar Sonido</button>
-<br />
-<p id="infosound"></p>
-<br />
-<p id="minuto"></p>
+<h2 style="font-family: 'EB Garamond', serif; text-align:center">Ajustes</h2>
+<div class="center wrapper">
+  <div class="borde" style="height: 100px; width: 50%; padding: 10px; padding-bottom: 30px;">
+    <label for="sonido" style="font-family: 'EB Garamond', serif; font-size: 18px;">Aviso Sonoro</label><br />
+    <select name="sonido" style="background-color: #fad6ad;text-align: center;font-size: 18px; width: 80%; font-family: 'EB Garamond', serif; text-align:center" id="sonido">
+      <option value="" selected>Ninguno</option>
+      <option value="https://www.myinstants.com/media/sounds/zeldaitem.swf.mp3">
+        Sonido Zelda
+      </option>
+      <option value="avisos/avisomujer.mp3">TTS Mujer</option>
+    </select>
+    <button onclick="testsound()" style="width: 19%; font-family: 'EB Garamond', serif; font-size: 18px; background-color: #fad6ad; border-radius: 5px;">Probar Sonido</button>
+    <br /><br />
+    <label for="audio_src" style="font-family: 'EB Garamond', serif; font-size: 18px;">URL sonido personalizado</label>
+    <br />
+    <input type="text" name="audio_src" style="background-color: #fad6ad;font-size: 18px;text-align: center; width: 80%; font-family: 'EB Garamond', serif; text-align:center" id="audio_src" />
+    <button onclick="testsoundcustom()" style="width: 19%; font-family: 'EB Garamond', serif; font-size: 18px; background-color: #fad6ad; border-radius: 5px;">Probar Sonido</button>
+    <br />
+    <p id="infosound"></p>
+    <br />
+    <p id="minuto"></p>
+    </div>
+</div>
+
 <script>
   var sonidos = document.getElementById("sonido");
   var aviso = sonidos.options[sonidos.selectedIndex].value;
