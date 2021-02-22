@@ -140,13 +140,6 @@ width: 15%;"></a>
       if (segundos < 10) {
         segundos = pad(segundos);
       }
-      document.getElementById("minuto").innerHTML =
-        "Hora exacta de spawn: " +
-        horaactual +
-        ":" +
-        minutoaponer +
-        ":" +
-        segundos;
       start.setHours(horaactual, minutoaponer, segundos);
       function pad(num) {
         return ("0" + parseInt(num)).substr(-2);
@@ -177,13 +170,7 @@ width: 15%;"></a>
             minutoaponer = minutoexacto + 10;
           }
           start.setHours(horaactual, minutoaponer, segundos);
-          document.getElementById("minuto").innerHTML =
-            "Hora exacta de spawn: " +
-            horaactual +
-            ":" +
-            minutoaponer +
-            ":" +
-            segundos;
+          
         }
         setTimeout(tick, 1000);
       }
