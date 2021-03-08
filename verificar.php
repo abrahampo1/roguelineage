@@ -55,6 +55,8 @@ if(isset($_POST["url"]))
         echo '<br><input name="username" type="hidden" value="'.$datos["name"].'">';
         echo '<br><h4 id="verificado" style="margin-left: 10px"></h4><input type="hidden" id="descripcion_cuenta" value="'.$datos["description"].'">';
         echo "</div>";
+        echo '<input type="hidden" name="ok">';
+        echo '<input type="hidden" name="rbxid" value="'.$datos["id"].'">';
         echo '';
     }
 }

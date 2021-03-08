@@ -1,5 +1,49 @@
 <?php
-$file = "words.txt";
+include("database.php");
+if (isset($_POST["robloxuserregister"]))
+{
+    $userid = $_POST["robloxuserregister"];
+    if(isset($_POST["ok"]))
+    {
+        if(isset($_POST["password"]))
+        {
+            if(isset($_POST["password_repeat"]))
+            {
+                if($_POST["password"] == $_POST["password_repeat"])
+                {
+                    $password = $_POST["password"];
+                    $rbxid = $_POST["rbxid"];
+                    if($userid != $rbxid)
+                    {
+                        echo "c'mon dude... you can try it better... - Abrahampo1";
+                        exit;
+                    }
+                    $username = $_POST["username"];
+                    $hashpass = password_hash($password, PASSWORD_DEFAULT);
+                    $sql = "INSERT INTO `users` (`id`, `rbxid`, `user`, `pass`) VALUES (NULL, '$rbxid', '$username', '$hashpass');";
+                    if(mysqli_query($link, $sql))
+                    {
+                        header("location: index.php");
+                    }else
+                    {
+                        echo 'Its seems like there are an error amongus... - Abrahampo1';
+                        exit;
+                    }
+                }else
+                {
+                    echo "dude, stop trying to break my shit :( - Abrahampo1";
+                    exit;
+                }
+            }
+        }
+    }else
+    {
+        echo 'did you really think that would work? - Abrahampo1';
+        exit;
+    }
+}
+
+    $file = "words.txt";
 $letras = 15;
 $file_arr = array(
     "hostia",
@@ -274,7 +318,7 @@ width: 15%;"></a>
                     <h3 style="margin: 10px; margin-right: 50px">Shawty like a melody</h3>
                     <img src="https://i.imgur.com/QnDBR9p.png" alt="" height="50px" width="50px">
                     <div style="margin-top: 50px;" id="myDropdown" class="dropdown-content">
-                        <a class="borde" href="index.php">inicio</a>
+                        <a class="borde" href="index.php">Home</a>
                         <a id="myBtn">Login</a>
                     </div>
                 </button>
@@ -282,7 +326,7 @@ width: 15%;"></a>
 
             <div class="" style="position: absolute; text-align: right; top: 23px; left: 20px; display:flex">
                 <button onclick="minerales()" style="font-size: 18; font-family: 'EB Garamond', serif; background-color:#fad6ad; height: 50px; width: 100px">Minerales</button>
-                <button onclick="minerales()" style="font-size: 18; font-family: 'EB Garamond', serif; background-color:#fad6ad; height: 50px; width: 100px; margin-left: 10px">Houses</button>
+                <button onclick="" style="font-size: 18; font-family: 'EB Garamond', serif; background-color:#fad6ad; height: 50px; width: 100px; margin-left: 10px">Houses</button>
             </div>
         </div>
     </div>
@@ -331,17 +375,18 @@ width: 15%;"></a>
                     <input type="hidden" id="descripcion_cuenta" value="">
                 </div>
                 <div id="finish_register" style="display: none;">
-                    <br><br><hr>
+                    <br><br>
+                    <hr>
                     <label for="password">Password</label><br>
-                    <input type="password" style="width: 100%;" id="password" name="password"><br><br> 
+                    <input type="password" style="width: 100%;" id="password" name="password"><br><br>
                     <label for="password_repeat">Repeat Password</label><br>
                     <input type="password" onkeyup="verify_pass()" style="width: 100%;" id="password_repeat" name="password_repeat"><br>
                 </div>
+                <div class="" style="text-align:center; top: 53px; left: 20px; display:flex; margin-top: 40px">
+                    <button id="" onclick="loaddata()" type="button" style="font-size: 18; font-family: 'EB Garamond', serif; background-color:#fad6ad; height: 50px; width: 100px">Refresh</button>
+                    <button id="btnregister" type="submit" disabled style="margin-left: 10px; font-size: 18; font-family: 'EB Garamond', serif; background-color:#fad6ad; height: 50px; width: 100px">Register</button>
+                </div>
             </form>
-            <div class="" style="text-align:center; top: 53px; left: 20px; display:flex; margin-top: 40px">
-                <button id="" onclick="loaddata()" style="font-size: 18; font-family: 'EB Garamond', serif; background-color:#fad6ad; height: 50px; width: 100px">Refresh</button>
-                <button id="btnregister" disabled style="margin-left: 10px; font-size: 18; font-family: 'EB Garamond', serif; background-color:#fad6ad; height: 50px; width: 100px">Register</button>
-            </div>
         </div>
 
     </div>
@@ -371,7 +416,8 @@ width: 15%;"></a>
     }
 </script>
 <script type="text/javascript">
-var verified = false;
+    var verified = false;
+
     function verifyuser() {
         var textorandom = document.getElementById('random_words').value;
         var descripcionusuario = document.getElementById('descripcion_cuenta').value;
@@ -387,18 +433,14 @@ var verified = false;
         }
     }
 
-    function verify_pass()
-    {
+    function verify_pass() {
         var pass1 = document.getElementById('password').value;
         var pass2 = document.getElementById('password_repeat').value;
-        if(pass1 == pass2)
-        {
-            if(verified == true)
-            {
+        if (pass1 == pass2) {
+            if (verified == true) {
                 $('#btnregister').prop('disabled', false)
             }
-        }else
-        {
+        } else {
             $('#btnregister').prop('disabled', true)
         }
     }
@@ -412,7 +454,7 @@ var verified = false;
 
 <script>
     function minerales() {
-        window.location.href = "./index.html";
+        window.location.href = "https://abrahampo1.github.io/roguelineage";
     }
 </script>
 <script>
