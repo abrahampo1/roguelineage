@@ -1,6 +1,7 @@
 <?php
 if(isset($_POST["url"]))
 {
+    include("database.php");
     $userid = $_POST["url"];
     $html = file_get_contents("https://www.roblox.com/users/".$userid."/profile"); //Convierte la información de la URL en cadena
     $dom = new DOMDocument();
@@ -43,10 +44,18 @@ if(isset($_POST["url"]))
     $imagen = $datos["data"][0]["imageUrl"];
     $json = file_get_contents("https://users.roblox.com/v1/users/".$userid."");
     $datos = json_decode($json, true);
-    echo '<input type="hidden" name="profilepic" value="'.$imagen.'">';
-    echo '<br><input name="username" type="hidden" value="'.$datos["name"].'">';
-    echo '<br><h4 id="verificado" style="margin-left: 10px"></h4><input type="hidden" id="descripcion_cuenta" value="'.$datos["description"].'">';
-    echo "</div>";
-    echo '';
+    $sql = "SELECT * FROM users WHERE rbxid = '$userid'";
+    $do = mysqli_query($link, $sql);
+    if($do->num_rows > 0)
+    {
+        echo '<h4>This roblox user is already registered!</h4>';
+    }else
+    {
+        echo '<input type="hidden" name="profilepic" value="'.$imagen.'">';
+        echo '<br><input name="username" type="hidden" value="'.$datos["name"].'">';
+        echo '<br><h4 id="verificado" style="margin-left: 10px"></h4><input type="hidden" id="descripcion_cuenta" value="'.$datos["description"].'">';
+        echo "</div>";
+        echo '';
+    }
 }
 ?>
