@@ -1,18 +1,67 @@
 <?php
 $file = "words.txt";
 $letras = 15;
-// Convert the text fle into array and get text of each line in each array index
-$file_arr = file($file);
-// Total number of lines in file
+$file_arr = array(
+    "hostia",
+    "catalan",
+    "frozono",
+    "furias",
+    "smile",
+    "pirulin",
+    "bts",
+    "morir",
+    "emo",
+    "daft punk",
+    "rigan",
+    "durum",
+    "silver",
+    "grip",
+    "gate",
+    "mira",
+    "mi",
+    "pantalla",
+    "comprendo",
+    "ovesewalker",
+    "ultra",
+    "super",
+    "lapiz",
+    "boligrafo",
+    "almendra",
+    "archmelacome",
+    "flexeo",
+    "drip",
+    "roguemaballs",
+    "vdeviolencia",
+    "valencia",
+    "pontevedra",
+    "tumama",
+    "yourmom",
+    "ym",
+    "free grip",
+    "haseldan",
+    "rigan",
+    "monky shield",
+    "casa",
+    "flor",
+    "mariposa",
+    "azul",
+    "verde",
+    "welcum to dark lineage",
+    "mana plse",
+    "drop silver",
+    "the mine is mine"
+);
 $num_lines = count($file_arr);
-// Getting the last array index number
 $last_arr_index = $num_lines - 1;
-// Random index number
 $rand_text = "";
 // random text from a line. The line will be a random number within the indexes of the array
 for ($i = 0; $i < $letras; $i++) {
     $rand_index = rand(0, $last_arr_index);
-    $rand_text .= $file_arr[$rand_index];
+    if ($i == 0) {
+        $rand_text .= $file_arr[$rand_index];
+    } else {
+        $rand_text .= " " . $file_arr[$rand_index];
+    }
 }
 $textorandom = $rand_text;
 ?>
@@ -270,20 +319,26 @@ width: 15%;"></a>
             <?php
 
             echo '<div id="" class="borde" style="padding: 10px; background-color: white">' . $textorandom . '</div>';
-            echo '<input type="hidden" id="random_words" value="'.$textorandom.'">';
+            echo '<input type="hidden" id="random_words" value="' . $textorandom . '">';
 
             ?>
 
             <h3>Paste your roblox profile ID</h3>
             <form action="" method="POST">
-                <input style="width: 100%;" onchange="loaddata()" type="text" id="robloxuserregister" name="robloxuserregister">
+                <input style="width: 100%;" autocomplete="off" onchange="loaddata()" type="text" id="robloxuserregister" name="robloxuserregister">
                 <div id="display_info">
-                <input type="hidden" id="descripcion_cuenta" value="">
+                    <input type="hidden" id="descripcion_cuenta" value="">
+                </div>
+                <div id="finish_register" style="display: none;">
+                    <br><br><hr>
+                    <label for="password">Password</label><br>
+                    <input type="password" style="width: 100%;" id="password" name="password"><br><br> 
+                    <label for="password_repeat">Repeat Password</label><br>
+                    <input type="password" onkeyup="verify_pass()" style="width: 100%;" id="password_repeat" name="password_repeat"><br>
                 </div>
             </form>
             <div class="" style="text-align:center; top: 53px; left: 20px; display:flex; margin-top: 40px">
                 <button id="" onclick="loaddata()" style="font-size: 18; font-family: 'EB Garamond', serif; background-color:#fad6ad; height: 50px; width: 100px">Refresh</button>
-                <button id="btnverify" onclick="verifyuser()" disabled style="margin-left: 10px; font-size: 18; font-family: 'EB Garamond', serif; background-color:#fad6ad; height: 50px; width: 100px">Verify</button>
                 <button id="btnregister" disabled style="margin-left: 10px; font-size: 18; font-family: 'EB Garamond', serif; background-color:#fad6ad; height: 50px; width: 100px">Register</button>
             </div>
         </div>
@@ -313,23 +368,41 @@ width: 15%;"></a>
             alert("error");
         }
     }
-    
-    
 </script>
 <script type="text/javascript">
-    function verifyuser()
-    {
+var verified = false;
+    function verifyuser() {
         var textorandom = document.getElementById('random_words').value;
         var descripcionusuario = document.getElementById('descripcion_cuenta').value;
-        if(descripcionusuario == textorandom)
+        if (descripcionusuario == textorandom) {
+            $('#verificado').html("Verified!");
+            verified = true;
+            document.getElementById("finish_register").style.display = "";
+        } else {
+            verified = false;
+            $('#verificado').html("The Bot cant Verify you, make sure you copy all the text on your description!");
+            $('#btnregister').prop('disabled', true)
+            document.getElementById("finish_register").style.display = "none";
+        }
+    }
+
+    function verify_pass()
+    {
+        var pass1 = document.getElementById('password').value;
+        var pass2 = document.getElementById('password_repeat').value;
+        if(pass1 == pass2)
         {
-            $('#btnregister').prop('disabled', false)
+            if(verified == true)
+            {
+                $('#btnregister').prop('disabled', false)
+            }
         }else
         {
-            alert("no se ha podido verificar!");
+            $('#btnregister').prop('disabled', true)
         }
     }
 </script>
+
 </html>
 
 <!-- Google Tag Manager (noscript) -->

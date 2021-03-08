@@ -15,7 +15,7 @@ if(isset($_POST["url"]))
     $imagen = "";
     foreach ($divs as $div) {
         //si encentramos la clase mc-title nos quedamos con el titulo
-    
+        
         //si encentramos la clase mr-rating nos quedamos con la puntuacion
        
     }
@@ -44,9 +44,9 @@ if(isset($_POST["url"]))
     $json = file_get_contents("https://users.roblox.com/v1/users/".$userid."");
     $datos = json_decode($json, true);
     echo '<img src="'.$imagen.'"></img>';
-    echo '<br>'.$datos["name"].'<br><br>';
+    echo '<br>'.$datos["name"].'<input name="username" type="hidden" value="'.$datos["name"].'"><br><br>';
     echo $flood.'<br>';
-    echo '<br>Description: '.$datos["description"].' <input type="hidden" id="descripcion_cuenta" value="'.$datos["description"].'">';
+    echo '<br><h4 id="verificado" style="margin-left: 10px"></h4><input type="hidden" id="descripcion_cuenta" value="'.$datos["description"].'">';
     echo "</div>";
     echo '';
 }
