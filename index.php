@@ -1,49 +1,61 @@
 <?php
+include("protect.php");
+/* ADMIN pass: 1234qwerty */
+if (isset($_POST["user"]) && isset($_POST["pass"])) {
+    $nombre = $_POST["user"];
+    $pass = $_POST["pass"];
+    include('database.php');
+    $sql = "SELECT * FROM users WHERE user = '$nombre'";
+    $do = mysqli_query($link, $sql);
+    $result = mysqli_fetch_assoc($do);
+    if (password_verify($pass, $result["pass"])) {
+        $_SESSION['user_id'] = $result['id'];
+        $hora = time();
+        $idusuario = $result['id'];
+        $sql = "UPDATE `users` SET `last_login` = '$hora' WHERE `usuarios`.`id` = $idusuario";
+        mysqli_query($link, $sql);
+        header("location: index.php");
+    } else {
+        echo "Bad Credentials. - Abrahampo1";
+        exit;
+    }
+}
 include("database.php");
-if (isset($_POST["robloxuserregister"]))
-{
+if (isset($_POST["robloxuserregister"])) {
     $userid = $_POST["robloxuserregister"];
-    if(isset($_POST["ok"]))
-    {
-        if(isset($_POST["password"]))
-        {
-            if(isset($_POST["password_repeat"]))
-            {
-                if($_POST["password"] == $_POST["password_repeat"])
-                {
+    if (isset($_POST["ok"])) {
+        if (isset($_POST["password"])) {
+            if (isset($_POST["password_repeat"])) {
+                if ($_POST["password"] == $_POST["password_repeat"]) {
                     $password = $_POST["password"];
                     $rbxid = $_POST["rbxid"];
-                    if($userid != $rbxid)
-                    {
+                    if ($userid != $rbxid) {
                         echo "c'mon dude... you can try it better... - Abrahampo1";
                         exit;
                     }
                     $username = $_POST["username"];
                     $hashpass = password_hash($password, PASSWORD_DEFAULT);
                     $sql = "INSERT INTO `users` (`id`, `rbxid`, `user`, `pass`) VALUES (NULL, '$rbxid', '$username', '$hashpass');";
-                    if(mysqli_query($link, $sql))
-                    {
+                    if ($do = mysqli_query($link, $sql)) {
+                        $_SESSION['user_id'] = mysqli_insert_id($link);
                         header("location: index.php");
-                    }else
-                    {
+                    } else {
                         echo 'Its seems like there are an error amongus... - Abrahampo1';
                         exit;
                     }
-                }else
-                {
+                } else {
                     echo "dude, stop trying to break my shit :( - Abrahampo1";
                     exit;
                 }
             }
         }
-    }else
-    {
+    } else {
         echo 'did you really think that would work? - Abrahampo1';
         exit;
     }
 }
 
-    $file = "words.txt";
+$file = "words.txt";
 $letras = 15;
 $file_arr = array(
     "hostia",
@@ -308,36 +320,16 @@ width: 15%;"></a>
   top: 50px;
   right: 50px;
   width: 15%;"></a>-->
-<nav>
-    <div style="background-color:#fad6ad; border-radius: 10px; display:ruby">
-        <div style="padding: 10px;" class="borde">
-            <h1 style="text-align: center; margin-top: 10px;" style="font-family: 'EB Garamond', serif; ">RogueMarket</h1>
-            <div class="dropdown borde" style="position: absolute; text-align: right; top: 20px; right: 20px; display:flex">
-                <button onclick="myFunction()" class="dropbtn">
-
-                    <h3 style="margin: 10px; margin-right: 50px">Shawty like a melody</h3>
-                    <img src="https://i.imgur.com/QnDBR9p.png" alt="" height="50px" width="50px">
-                    <div style="margin-top: 50px;" id="myDropdown" class="dropdown-content">
-                        <a class="borde" href="index.php">Home</a>
-                        <a id="myBtn">Login</a>
-                    </div>
-                </button>
-            </div>
-
-            <div class="" style="position: absolute; text-align: right; top: 23px; left: 20px; display:flex">
-                <button onclick="minerales()" style="font-size: 18; font-family: 'EB Garamond', serif; background-color:#fad6ad; height: 50px; width: 100px">Minerales</button>
-                <button onclick="" style="font-size: 18; font-family: 'EB Garamond', serif; background-color:#fad6ad; height: 50px; width: 100px; margin-left: 10px">Houses</button>
-            </div>
-        </div>
-    </div>
-</nav>
+<?php
+include("navbar.php");
+?>
 <br>
 <br /><br />
 
 <br />
 <footer>
     <p style="text-align: center">
-        Esta mierda ha sido programada por Abraham (abrahampo1) de la house Frozono
+        This page was developed by Abraham (Abrahampo1) member of Frozono.
     </p>
 </footer>
 <div id="myModal" class="modal borde">
@@ -346,10 +338,13 @@ width: 15%;"></a>
         <div class="center" style="display:inline;">
             <h1>Login</h1>
             <h3>Type your roblox username</h3>
-            <form action="verificar.php" method="post">
-                <input style="width: 100%;" type="text" name="url">
+            <form action="" method="post">
+                <input style="width: 100%;" type="text" name="user" required><br>
+                <h4>Type your password (not your roblox password)</h4>
+                <input type="password" style="width: 100%;" name="pass" required><br><br>
+                <button type="submit" style="margin-left: 10px; font-size: 18; font-family: 'EB Garamond', serif; background-color:#fad6ad; height: 50px; width: 100px">Login</button>
+                <button id="register" type="button" style="font-size: 18; font-family: 'EB Garamond', serif; background-color:#fad6ad; height: 50px; width: 100px">Register</button>
             </form>
-            <button id="register" style="font-size: 18; font-family: 'EB Garamond', serif; background-color:#fad6ad; height: 50px; width: 100px">Register</button>
         </div>
 
     </div>
@@ -392,121 +387,4 @@ width: 15%;"></a>
     </div>
 
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    function loaddata() {
-        var name = document.getElementById("robloxuserregister").value;
-        if (name) {
-            $.ajax({
-                type: 'POST',
-                url: 'verificar.php',
-                data: {
-                    url: name,
-                },
-                success: function(response) {
-                    $('#display_info').html(response);
-                    $('#btnverify').prop('disabled', false)
-                    $('#btnregister').prop('disabled', true)
-                    verifyuser();
-                }
-            });
-        } else {
-            alert("error");
-        }
-    }
-</script>
-<script type="text/javascript">
-    var verified = false;
-
-    function verifyuser() {
-        var textorandom = document.getElementById('random_words').value;
-        var descripcionusuario = document.getElementById('descripcion_cuenta').value;
-        if (descripcionusuario == textorandom) {
-            $('#verificado').html("Verified!");
-            verified = true;
-            document.getElementById("finish_register").style.display = "";
-        } else {
-            verified = false;
-            $('#verificado').html("The Bot cant Verify you, make sure you copy all the text on your description!");
-            $('#btnregister').prop('disabled', true)
-            document.getElementById("finish_register").style.display = "none";
-        }
-    }
-
-    function verify_pass() {
-        var pass1 = document.getElementById('password').value;
-        var pass2 = document.getElementById('password_repeat').value;
-        if (pass1 == pass2) {
-            if (verified == true) {
-                $('#btnregister').prop('disabled', false)
-            }
-        } else {
-            $('#btnregister').prop('disabled', true)
-        }
-    }
-</script>
-
 </html>
-
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7LGVHH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-<script>
-    function minerales() {
-        window.location.href = "https://abrahampo1.github.io/roguelineage";
-    }
-</script>
-<script>
-    /* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }
-</script>
-<script>
-    var modal = document.getElementById("myModal");
-    var btn = document.getElementById("myBtn");
-    var span = document.getElementsByClassName("close")[0];
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>
-<script>
-    var modal2 = document.getElementById("registermodal");
-    var btn2 = document.getElementById("register");
-    var span = document.getElementsByClassName("close2")[0];
-    btn2.onclick = function() {
-        modal2.style.display = "block";
-    }
-    span.onclick = function() {
-        modal2.style.display = "none";
-    }
-    window.onclick = function(event) {
-        if (event.target == modal2) {
-            modal2.style.display = "none";
-        }
-    }
-</script>
