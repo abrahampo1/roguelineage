@@ -49,7 +49,8 @@ $file_arr = array(
     "welcum to dark lineage",
     "mana plse",
     "drop silver",
-    "the mine is mine"
+    "the mine is mine",
+    "nerf"
 );
 $num_lines = count($file_arr);
 $last_arr_index = $num_lines - 1;
@@ -166,7 +167,7 @@ $textorandom = $rand_text;
         padding: 20px;
         border-color: #503e28;
         border-style: double;
-        width: 20%;
+        width: 40%;
     }
 
     /* The Close Button */
@@ -325,7 +326,7 @@ width: 15%;"></a>
 
             <h3>Paste your roblox profile ID</h3>
             <form action="" method="POST">
-                <input style="width: 100%;" autocomplete="off" onchange="loaddata()" type="text" id="robloxuserregister" name="robloxuserregister">
+                <input style="width: 100%;" autocomplete="off" onchange="loaddata()" type="number" id="robloxuserregister" name="robloxuserregister">
                 <div id="display_info">
                     <input type="hidden" id="descripcion_cuenta" value="">
                 </div>
