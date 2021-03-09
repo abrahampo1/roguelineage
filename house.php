@@ -97,35 +97,30 @@ include("navbar.php");
 ?>
 <br>
 <br />
-<style>
-    .grid-container {
-        display: grid;
-        grid-template-columns: auto auto auto;
-        padding: 10px;
-    }
-
-    .grid-item {
-        background-color: fad6ad;
-        margin: 10px;
-        text-align: center;
-    }
-</style>
-<div class="grid-container" style="">
-    <div class="borde grid-item" style="">
-        <div style="text-align: left; display:flex">
-            <img style="padding-top: 5px;" class="" src="https://static.wikia.nocookie.net/rogue-lineage/images/7/7d/Silver_Screenshot-0.png/revision/latest?cb=20190613225622" width="50px" height="50px" alt="">
-            <h4 class="">Frozono</h4>
-        </div>
-        <div class="borde" style="margin: auto; text-align: left">
-            <p style="margin: 5px;">
-                <i class="fas fa-user" title="Members"> 10</i><br>
-                <i class="fas fa-plus" title="Reputation"> 100</i>
-            </p>
-        </div>
-
+<div class="borde" style="background-color: #fad6ad;">
+    <h1 style="text-align: center;">House Frozono</h1>
+    <div style="text-align: center; margin: 10px">
+        <img style="padding-top: 5px; text-align: center" class=" borde" src="https://static.wikia.nocookie.net/rogue-lineage/images/7/7d/Silver_Screenshot-0.png/revision/latest?cb=20190613225622" width="200px" height="200px" alt="">
     </div>
 </div>
-
+<hr>
+<div class="borde" style="background-color: #fad6ad;">
+    <h4 style="text-align: center;">Reputation (100)</h4>
+    <div class="borde" style="margin: 10px; padding: 10px">
+        <i class="fas fa-user"> Abrahampo1</i>
+        <br>
+        <i class="fas fa-star"> 5/5</i>
+        <br><br>
+        >>Really nice guys
+        <br>
+    </div>
+    <div style="text-align: center; margin: 5px"><a  href="#">View More...</a></div>
+</div>
+<hr>
+<div class="borde" style="background-color: #fad6ad;">
+    <h4 style="text-align: center;">Members (1)</h4>
+    <img style="margin: 10px;" title="abrahampo1" class="borde" src="https://tr.rbxcdn.com/a3a51e428166f2355b333ceb6a328bb4/150/150/AvatarHeadshot/Png" alt="" width="50px" height="50px">
+</div>
 <br />
 <footer>
     <p style="text-align: center">
