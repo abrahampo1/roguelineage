@@ -104,7 +104,7 @@ include("navbar.php");
     </div>
 </div>
 <hr>
-<div class="borde" style="background-color: #fad6ad;">
+<div id="items-container" class="borde" style="background-color: #fad6ad;">
     <h4 style="text-align: center;">Reputation (100)</h4>
     <div class="borde" style="margin: 10px; padding: 10px">
         <i class="fas fa-user"> Abrahampo1</i>
