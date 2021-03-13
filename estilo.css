@@ -1,0 +1,269 @@
+@import url("https://fonts.googleapis.com/css?family=Sen&display=swap");
+
+:root {
+  --body-bg: #eceff1;
+  --card-border-color: #eceff1;
+  --card-bg-color: #eceff1;
+  --card-header-color: #000000;
+  --card-title-color: #000000;
+  --card-text-color: #000000;
+  --card-footer-color: #f8f8f8;
+  --card-btn-text: dodgerblue;
+
+  --switch-size: 24px;
+  --switch-radius: 30px;
+  --switch-color-off: #ddd;
+  --switch-color-on: #3cb371;
+  --switch-label-size: 1rem;
+  --slider-color: #fff;
+  --slider-size: var(--switch-size);
+}
+:root[data-theme="dark"] {
+  --body-bg: #263238;
+  --card-border-color: #fff;
+  --card-bg-color: #263238;
+  --card-header-color: #4f5b62;
+  --card-title-color: #e5e5e5;
+  --card-text-color: #fff;
+  --card-footer-color: #222;
+  --card-btn-text: tomato;
+}
+
+html {
+  background-color: var(--body-bg);
+  font-family: "Poppins", sans-serif;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.card {
+  box-shadow: 0px 0px 30px -10px black;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 99%;
+  background-color: var(--body-bg);
+}
+
+.item-image {
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+p {
+  color: var(--card-text-color);
+}
+
+.item-title {
+  font-size: 30px;
+  margin-top: -10px;
+}
+
+.item-price {
+  font-size: 20px;
+  margin-top: -30px;
+}
+.item-header {
+  position: relative;
+  display: flex;
+  top: 10px;
+  left: 10px;
+  vertical-align: text-top;
+}
+
+.item-header p {
+  margin-left: 10px;
+}
+
+.item-creator-image {
+  border-radius: 50%;
+}
+
+.grid-item {
+  background-color: var(--card-bg-color);
+  margin: 10px;
+  width: 350px;
+  height: auto;
+  text-align: center;
+}
+
+.dropbtn {
+  background-color: #fad6ad;
+  color: black;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fad6ad;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fad6ad;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 100px 5px black;
+  padding: 20px;
+  width: 40%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navbar {
+  margin-top: 30px;
+  position: relative;
+  left: calc(50% - 25%);
+  background-color: #fad6ad;
+  border-radius: 10px;
+  display: ruby;
+  width: 50%;
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+    text-align: center;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+input{
+    font-size: 30px;
+    font-family: 'Poppins' sans-serif;
+}
+
+@media only screen and (max-width: 620px) {
+
+    .navbar{
+        margin-top: 30px;
+        position: relative;
+        left: 0;
+        background-color: #fad6ad;
+        border-radius: 10px;
+        display: ruby;
+        width: 100%;
+    }
+    .card{
+        width: 95%;
+    }
+    .modal-content {
+        width: 80%;
+      }
+
+
+}

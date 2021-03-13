@@ -4,32 +4,10 @@ include("protect.php");
 
 ?>
 
-<style>
-    html {
-        background-color: #a1978e;
-    }
-
-    .wrapper {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 10px;
-        grid-auto-rows: minmax(100px, auto);
-    }
-
-    .center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 200px;
-    }
-
-    .borde {
-        border-color: #503e28;
-        border-style: double;
-    }
-</style>
 <html>
 <meta charset="UTF-8" />
+<meta lang="en">
+<link rel="stylesheet" href="estilo.css">
 
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -53,7 +31,8 @@ include("protect.php");
     <!-- End Google Tag Manager -->
     <title>Roguemarket - Home</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="apple-touch-icon" sizes="57x57" href="icon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="icon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="icon/apple-icon-72x72.png">
@@ -98,39 +77,26 @@ include("navbar.php");
 ?>
 <br>
 <br />
-<style>
-    .grid-container {
-        display: grid;
-        grid-template-columns: auto auto auto;
-        padding: 10px;
-    }
+<html>
 
-    .grid-item {
-        background-color: fad6ad;
-        margin: 10px;
-        text-align: center;
-    }
-</style>
-<div class="grid-container" style="">
-    <div class="borde grid-item" style="">
-        <br>
-        PD
-        <br>
-            <img style="margin-top: 5px; margin-bottom: 10px" class="borde" src="https://static.wikia.nocookie.net/rogue-lineage/images/5/57/BALD.PNG/revision/latest/scale-to-width-down/340?cb=20201228181411" width="150px" height="150px" alt="">
-        <div class="borde" style="margin: auto; text-align: left; margin: 5px">
-            <p style="margin: 5px;">
-                <i style="margin: 2px;" class="fas fa-coins" title="Silver"> 10</i>
-                <br>
-                <i style="margin: 2px;" class="fas fa-user" title="User"> Abrahampo1</i>
-                <br>
-                <i style="margin: 2px;" class="fas fa-chess-rook" title="House"> Frozono</i>
-                <br>
-                <i style="margin: 2px;" class="fas fa-plus" title="House"> 100</i>
-            </p>
+<body>
+    <div class="grid-container">
+        <div class="grid-item card">
+            <div style=" height: 70px; text-align: left">
+                <div class="item-header">
+                    <img class="item-creator-image" src="https://i.imgur.com/l2VVccN.jpg" alt="" height="50" width="50">
+                    <p>Abrahampo1</p>
+                </div>
+            </div>
+            <img class="item-image" src="https://i.imgur.com/l2VVccN.jpg" alt="">
+            <p class="item-title">PD</p>
+            <p class="item-price"><img style="position: relative; top: 6px; left: 0px" src="https://i.imgur.com/4yBGYto.png" alt="" width="30" height="30">30000000</p>
         </div>
-
     </div>
-</div>
+</body>
+ 
+</html>
+
 
 <br />
 <footer>
@@ -138,4 +104,5 @@ include("navbar.php");
         This page was developed by Abraham (Abrahampo1) member of Frozono.
     </p>
 </footer>
+
 </html>

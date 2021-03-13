@@ -125,170 +125,33 @@ if (isset($_SESSION["user_id"])) {
     $sql = "SELECT * FROM users WHERE id = '$user'";
     $do = mysqli_query($link, $sql);
     $user_data = mysqli_fetch_assoc($do);
-    $json = file_get_contents("https://thumbnails.roblox.com/v1/users/avatar-headshot?format=Png&isCircular=false&size=150x150&userIds=".$user_data["rbxid"]);
+    $json = file_get_contents("https://thumbnails.roblox.com/v1/users/avatar-headshot?format=Png&isCircular=false&size=150x150&userIds=" . $user_data["rbxid"]);
     $datos = json_decode($json, true);
     $imagen_perfil = $datos["data"][0]["imageUrl"];
 }
 ?>
 
-
-<style>
-    .dropbtn {
-        background-color: #fad6ad;
-        color: black;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-        display: flex;
-    }
-
-    .dropbtn:hover,
-    .dropbtn:focus {
-        background-color: #503e28;
-    }
-
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #fad6ad;
-        min-width: 160px;
-        overflow: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-    }
-
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-    .dropdown a:hover {
-        background-color: #ddd;
-    }
-
-    .show {
-        display: block;
-    }
-
-    /* The Modal (background) */
-    .modal {
-        display: none;
-        /* Hidden by default */
-        position: fixed;
-        /* Stay in place */
-        z-index: 1;
-        /* Sit on top */
-        padding-top: 100px;
-        /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%;
-        /* Full width */
-        height: 100%;
-        /* Full height */
-        overflow: auto;
-        /* Enable scroll if needed */
-        background-color: rgb(0, 0, 0);
-        /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.4);
-        /* Black w/ opacity */
-    }
-
-    /* Modal Content */
-    .modal-content {
-        background-color: #fad6ad;
-        margin: auto;
-        padding: 20px;
-        border-color: #503e28;
-        border-style: double;
-        width: 40%;
-    }
-
-    /* The Close Button */
-    .close {
-        color: #aaaaaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    .close2 {
-        color: #aaaaaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .close2:hover,
-    .close2:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-</style>
-<script src="https://kit.fontawesome.com/861f2be186.js" crossorigin="anonymous"></script>
+<head>
+    <script src="https://kit.fontawesome.com/861f2be186.js" crossorigin="anonymous"></script>
+</head>
 <nav>
-    <div style="background-color:#fad6ad; border-radius: 10px; display:ruby">
+    <div class="navbar">
         <div style="padding: 10px;" class="borde">
             <h1 style="text-align: center; margin-top: 10px;" style="font-family: 'EB Garamond', serif; ">RogueMarket</h1>
             <div class="dropdown borde" style="position: absolute; text-align: right; top: 20px; right: 20px; display:flex">
-                <button onclick="myFunction()" class="dropbtn">
-
-                    <h3 style="margin: 10px; margin-right: 50px">
-                        <?php
-                        if (isset($_SESSION["user_id"])) {
-                            echo $user_data["user"];
-                        } else {
-                            echo "Log in...";
-                        }
-                        ?></h3>
-                    <img src="<?php
-                    if(isset($_SESSION["user_id"]))
-                    {
-                        echo $imagen_perfil;
-                    }else
-                    {
-                        echo "https://i.imgur.com/QnDBR9p.png";
-                    }
-                    ?>" alt="" height="50px" width="50px">
-                    <div style="margin-top: 50px;" id="myDropdown" class="dropdown-content">
-                        <a class="borde" href="index.php">Home</a>
-                        <?php
-                        if(!isset($_SESSION["user_id"]))
-                        {
-                            echo '<a id="myBtn">Login</a>';
-                        }else
-                        {
-                            echo '<a href="logout.php">Log Out</a>';
-                        }
-                        ?>
-                    </div>
-                </button>
-            </div>
-
-            <div class="" style="position: absolute; text-align: right; top: 23px; left: 20px; display:flex">
-                <button onclick="minerales()" style="font-size: 18; font-family: 'EB Garamond', serif; background-color:#fad6ad; height: 50px; width: 100px">Minerales</button>
-                <button onclick="houses()" style="font-size: 18; font-family: 'EB Garamond', serif; background-color:#fad6ad; height: 50px; width: 100px; margin-left: 10px">Houses</button>
+                        <a href="#" onclick="openNav()"><img style="border-radius: 50%;" src="<?php
+                                                                            if (isset($_SESSION["user_id"])) {
+                                                                                echo $imagen_perfil;
+                                                                            } else {
+                                                                                echo "https://i.imgur.com/QnDBR9p.png";
+                                                                            }
+                                                                            ?>" alt="" height="50px" width="50px"></a>
             </div>
         </div>
     </div>
 </nav>
 <div id="myModal" class="modal borde">
-    <div class="modal-content borde">
+    <div class="modal-content">
         <span class="close">&times;</span>
         <div class="center" style="display:inline;">
             <h1>Login</h1>
@@ -307,7 +170,7 @@ if (isset($_SESSION["user_id"])) {
 </div>
 <div id="registermodal" class="modal borde">
     <div class="modal-content borde">
-        <span class="close2">&times;</span>
+        <span class="close">&times;</span>
         <div class="center" style="display:inline;">
             <h1>Register</h1>
             <h3>Put this on your roblox description to verify your user:</h3>
@@ -319,7 +182,7 @@ if (isset($_SESSION["user_id"])) {
             ?>
 
             <h3>Paste your roblox profile ID</h3>
-            
+
             <form action="" method="POST">
                 <input style="width: 100%;" autocomplete="off" onchange="loaddata()" type="number" id="robloxuserregister" name="robloxuserregister">
                 <div id="display_info">
@@ -345,6 +208,32 @@ if (isset($_SESSION["user_id"])) {
     </div>
 
 </div>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <h1 style="color: whitesmoke; margin-left: 10px">RogueMarket</h1>
+  <a href="./">Home</a>
+  <?php
+  if(isset($_SESSION["user_id"])){
+    echo '<a href="logout">Log Out</a>';
+  }else{
+      echo '
+      <a id="myBtn" href="javascript:void(0)">Log in</a>';
+  }
+  ?>
+</div>
+
+<script>
+    /* Open the sidenav */
+function openNav() {
+  document.getElementById("mySidenav").style.width = "100%";
+}
+
+/* Close/hide the sidenav */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     function loaddata() {
@@ -442,6 +331,7 @@ toggle between hiding and showing the dropdown content */
     var span = document.getElementsByClassName("close")[0];
     btn.onclick = function() {
         modal.style.display = "block";
+        closeNav();
     }
     span.onclick = function() {
         modal.style.display = "none";
@@ -455,7 +345,7 @@ toggle between hiding and showing the dropdown content */
 <script>
     var modal2 = document.getElementById("registermodal");
     var btn2 = document.getElementById("register");
-    var span = document.getElementsByClassName("close2")[0];
+    var span = document.getElementsByClassName("close")[1];
     btn2.onclick = function() {
         modal2.style.display = "block";
     }
